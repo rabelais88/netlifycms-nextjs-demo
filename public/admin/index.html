@@ -13,19 +13,20 @@
     <script>
       // custom markdown ide
       // NetlifyCMS exposes two constructs globally to allow you to create components inline: ‘createClass’ and ‘h’ (alias for React.createElement).
+      console.log(CKEditor);
       const MarkdownControl = createClass({
         onChange(event, editor) {
           const data = editor.getData();
           this.props.onChange(data);
         },
         render() {
-          return new CKEditor({
-            editor: ClassicEditor,
+          return new CKEditor.CKEditor({
+            editor: CKEditor.ClassicEditor,
             onChange: this.onChange,
           });
         },
       });
-      function markdownPreview(props) {
+      function MarkdownPreview(props) {
         return h('div', { dangerouslySetInnerHTML: { __html: props.value } });
       }
       CMS.registerWidget('markdownCustom', MarkdownControl, MarkdownPreview);
