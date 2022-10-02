@@ -17,6 +17,7 @@ declare global {
 }
 
 const CMSInternal: React.FC = () => {
+  console.log('cms internal');
   useEffect(() => {
     if (window?.netlifyIdentity) {
       window?.netlifyIdentity.on('init', (user: any) => {
