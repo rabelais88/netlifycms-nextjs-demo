@@ -6,6 +6,7 @@ backend:
 media_folder: public/user-content
 public_folder: user-content
 site_url: https://netlifycms-nextjs-demo.netlify.app
+publish_mode: editorial_workflow
 # slug for media files and etc.
 slug:
   encoding: 'ascii'
