@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
-// @ts-ignore
 import MarkdownCKEditor from '@/components/MarkdownCKEditor';
 
 // const CMS_CONFIG = {};
