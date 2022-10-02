@@ -12,26 +12,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-react@5.0.2/dist/ckeditor.js"></script>
     <script>
       // custom markdown ide
-      class CustomWidgetControl extends React.PureComponent {
-        onChange = (event, editor) => {
+      const MarkdownControl = createClass({
+        onChange(event, editor) {
           const data = editor.getData();
           this.props.onChange(data);
-        };
-
+        },
         render() {
           return new CKEditor({
             props: { editor: ClassicEditor, onChange: this.onChange },
           });
-        }
-      }
+        },
+      });
       function markdownPreview(props) {
         return h('div', { dangerouslySetInnerHTML: { __html: props.value } });
       }
-      CMS.registerWidget(
-        'markdownCustom',
-        CustomWidgetControl,
-        MarkdownPreview
-      );
+      CMS.registerWidget('markdownCustom', MarkdownControl, MarkdownPreview);
     </script>
   </body>
 </html>
