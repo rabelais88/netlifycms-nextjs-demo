@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
 
@@ -43,6 +44,9 @@ const CMS = dynamic(() => Promise.resolve(CMSInternal), {
 const Admin: NextPage = () => {
   return (
     <>
+      <Head>
+        <meta charSet="utf-8" />
+      </Head>
       <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
       <CMS />
     </>
