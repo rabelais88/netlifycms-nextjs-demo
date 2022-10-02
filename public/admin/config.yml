@@ -34,7 +34,7 @@ collections:
     folder: 'content/posts'
     create: true
     slug: '{{slug}}'
-    preview_path: '/posts-preview/{{slug}}'
+    preview_path: '/posts/{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
