@@ -12,27 +12,28 @@ slug:
   clean_accents: true
   sanitize_replacement: '_'
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: 'pages'
+    label: 'Pages'
     files:
-    - label: "Home"
-      name: "home"
-      file: "content/home.md"
-      fields:
-        - { label: "Title", name: "title", widget: "string"}
-        - { label: "Publish Date", name: "date", widget: "datetime" }
-        - { label: "Body", name: "body", widget: "markdown"}
-        - label: 'Cats'
-          name: "cats"
-          widget: list
-          fields:
-            - { label: "Name", name: "name", widget: "string"}
-            - { label: "Description", name: "description", widget: "text"}
-  - name: "post"
-    label: "Posts"
-    folder: "content/posts"
+      - label: 'Home'
+        name: 'home'
+        file: 'content/home.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+          - label: 'Cats'
+            name: 'cats'
+            widget: list
+            fields:
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'text' }
+  - name: 'post'
+    label: 'Posts'
+    folder: 'content/posts'
     create: true
     slug: '{{slug}}'
+    preview_path: '/posts-preview/{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
