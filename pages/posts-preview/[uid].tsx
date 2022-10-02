@@ -8,6 +8,7 @@ const _PostsPreviewUid: React.FC<PreviewTemplateComponentProps> = ({
   const title = entry.getIn(['data', 'title']);
   const date = entry.getIn(['data', 'date']);
   const body = entry.getIn(['data', 'body']);
+  console.log('posts preview uid', { title, date, body });
   return <div>{title}</div>;
 };
 
