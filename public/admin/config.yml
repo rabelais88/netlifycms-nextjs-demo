@@ -10,7 +10,6 @@ publish_mode: editorial_workflow
 # slug for media files and etc.
 slug:
   encoding: 'ascii'
-  clean_accents: true
   sanitize_replacement: '_'
 collections:
   - name: 'pages'
