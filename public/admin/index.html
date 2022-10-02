@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-react@5.0.2/dist/ckeditor.js"></script>
     <script>
       // custom markdown ide
+      // NetlifyCMS exposes two constructs globally to allow you to create components inline: ‘createClass’ and ‘h’ (alias for React.createElement).
       const MarkdownControl = createClass({
         onChange(event, editor) {
           const data = editor.getData();
@@ -19,7 +20,8 @@
         },
         render() {
           return new CKEditor({
-            props: { editor: ClassicEditor, onChange: this.onChange },
+            editor: ClassicEditor,
+            onChange: this.onChange,
           });
         },
       });
