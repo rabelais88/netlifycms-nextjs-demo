@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-react@5.0.2/dist/ckeditor.js"></script>
+    <script>
+      // custom markdown ide
+      // NetlifyCMS exposes two constructs globally to allow you to create components inline: ‘createClass’ and ‘h’ (alias for React.createElement).
+      const MarkdownControl = createClass({
+        onChange(event, editor) {
+          const data = editor.getData();
+          this.props.onChange(data);
+        },
+        render() {
+          return new CKEditor({
+            editor: CKEditor.ClassicEditor,
+            onChange: this.onChange,
+          });
+        },
+      });
+      function MarkdownPreview(props) {
+        return h('div', { dangerouslySetInnerHTML: { __html: props.value } });
+      }
+      CMS.registerWidget('markdownCustom', MarkdownControl, MarkdownPreview);
+    </script>
+  </body>
+</html>
