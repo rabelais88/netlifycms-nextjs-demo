@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import Script from 'next/script';
 import { useEffect } from 'react';
 
@@ -11,8 +10,23 @@ const Loading = () => (
   </div>
 );
 
+declare global {
+  interface Window {
+    netlifyIdentity: any;
+  }
+}
+
 const CMSInternal: React.FC = () => {
   useEffect(() => {
+    if (window?.netlifyIdentity) {
+      window?.netlifyIdentity.on('init', (user: any) => {
+        if (!user) {
+          window?.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
     import('netlify-cms-app').then((_CMS: any) => {
       _CMS.init({ CMS_CONFIG });
     });
