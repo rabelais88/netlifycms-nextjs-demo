@@ -1,12 +1,16 @@
 backend:
   name: git-gateway
   branch: main
+# for local dev
+# local_backend: true
 media_folder: public/user-content
 public_folder: user-content
-# slug:
-#   encoding: 'ascii'
-#   clean_accents: true
-#   sanitize_replacement: '_'
+site_url: https://netlifycms-nextjs-demo.netlify.app
+# slug for media files and etc.
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '_'
 collections:
   - name: "pages"
     label: "Pages"
@@ -24,6 +28,15 @@ collections:
           fields:
             - { label: "Name", name: "name", widget: "string"}
             - { label: "Description", name: "description", widget: "text"}
+  - name: "post"
+    label: "Posts"
+    folder: "content/posts"
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
 # collections:
 #   - name: 'pages'
 #     label: 'Pages'
