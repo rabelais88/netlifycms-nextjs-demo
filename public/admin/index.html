@@ -9,5 +9,29 @@
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-react@5.0.2/dist/ckeditor.js"></script>
+    <script>
+      // custom markdown ide
+      class CustomWidgetControl extends PureComponent {
+        onChange = (event, editor) => {
+          const data = editor.getData();
+          this.props.onChange(data);
+        };
+
+        render() {
+          return new CKEditor({
+            props: { editor: ClassicEditor, onChange: this.onChange },
+          });
+        }
+      }
+      function markdownPreview(props) {
+        return h('div', { dangerouslySetInnerHTML: { __html: props.value } });
+      }
+      CMS.registerWidget(
+        'markdownCustom',
+        CustomWidgetControl,
+        MarkdownPreview
+      );
+    </script>
   </body>
 </html>
